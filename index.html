@@ -9,6 +9,7 @@
     @media (prefers-color-scheme: dark) { :root { --bg:#121212; --panel:#1b1b1b; --panel-2:#202020; --text:#f3f3f3; --muted:#a0a0a0; --line:rgba(255,255,255,.08); --accent:#4da3ff; } }
     *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
     .frame{max-width:1440px;margin:0 auto;padding:24px} .desktop{display:block} .mobile{display:none}
+    .mobile-wrap{max-width:430px;margin:0 auto}
     .section{border:1px solid var(--line);border-radius:28px;background:var(--panel);padding:28px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
     .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
     .brand{color:var(--muted);font-size:.95rem;margin:0 0 8px} h1{margin:0;font-size:4.2rem;line-height:1.02;letter-spacing:-.04em;max-width:12ch}
@@ -25,6 +26,8 @@
     .section h2{margin:0 0 14px;font-size:2rem;letter-spacing:-.03em} .section p.section-lead{margin:0 0 24px;color:var(--muted);max-width:60ch}
     .card h3{margin:0 0 8px;font-size:1.05rem} .card p{margin:0;color:var(--muted)}
     .footer{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 18px;color:var(--muted);font-size:.95rem}
+    .footer a{color:var(--muted);text-decoration:none}
+    .footer a:hover{text-decoration:underline;color:var(--text)}
     @media (max-width:900px){.desktop{display:none}.mobile{display:block}.mobile h1{font-size:2.7rem}.mobile .hero{grid-template-columns:1fr}.mobile .cards,.mobile .feature-grid{grid-template-columns:1fr}.mobile .screen{min-height:440px}}
   </style>
 </head>
@@ -37,7 +40,7 @@
         <p class="lead">Search one or more words, highlight results instantly, preview pages before extracting, and save only what matters. extractall helps you work through long PDFs faster — even offline and with scanned documents.</p>
         <div class="cta-row">
           <a class="btn btn-primary" href="#">Download on the App Store</a>
-          <a class="btn btn-secondary" href="#">Get support</a>
+          <a class="btn btn-secondary" href="https://extractallapp.github.io/extractall-support/" target="_blank" rel="noopener noreferrer">Get support</a>
         </div>
       </div>
       <div class="mockup">
@@ -72,7 +75,7 @@
         <div class="card"><h3>Archive included</h3><p>Keep extracted files organized and ready to share.</p></div>
       </div>
     </section>
-    <div class="footer"><span>© 2026 extractall</span><span>Support</span><span>Privacy Policy</span></div>
+    <div class="footer"><span>© 2026 extractall</span><a href="https://extractallapp.github.io/extractall-support/" target="_blank" rel="noopener noreferrer">Support</a><a href="https://extractallapp.github.io/extractall-privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></div>
   </div>
 
   <div class="frame mobile">
@@ -84,7 +87,7 @@
           <p class="lead">Search one or more words, highlight results instantly, and extract only the pages that matter.</p>
           <div class="cta-row">
             <a class="btn btn-primary" href="#">Download on the App Store</a>
-            <a class="btn btn-secondary" href="#">Get support</a>
+            <a class="btn btn-secondary" href="https://extractallapp.github.io/extractall-support/" target="_blank" rel="noopener noreferrer">Get support</a>
           </div>
         </div>
         <div class="mockup">
@@ -101,6 +104,7 @@
           </div>
         </div>
       </section>
+      <div class="footer"><span>© 2026 extractall</span><a href="https://extractallapp.github.io/extractall-support/" target="_blank" rel="noopener noreferrer">Support</a><a href="https://extractallapp.github.io/extractall-privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a></div>
     </div>
   </div>
 </body>

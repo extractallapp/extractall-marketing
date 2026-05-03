@@ -3,305 +3,105 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>extractall</title>
+  <title>extractall Landing Preview</title>
   <style>
-    :root {
-      color-scheme: light dark;
-      --bg: #f7f6f2;
-      --panel: #ffffff;
-      --panel-2: #fbfbf9;
-      --text: #1f1f1f;
-      --muted: #666;
-      --line: rgba(0,0,0,.08);
-      --accent: #0a84ff;
-      --accent-2: #0b6cff;
-    }
-    @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #121212;
-        --panel: #1b1b1b;
-        --panel-2: #202020;
-        --text: #f3f3f3;
-        --muted: #a0a0a0;
-        --line: rgba(255,255,255,.08);
-        --accent: #4da3ff;
-        --accent-2: #6ab3ff;
-      }
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.55;
-    }
-    main {
-      max-width: 1120px;
-      margin: 0 auto;
-      padding: 24px 20px 72px;
-    }
-    .hero {
-      display: grid;
-      gap: 24px;
-      align-items: center;
-      grid-template-columns: 1fr;
-      padding: 28px 0 18px;
-    }
-    .brand {
-      color: var(--muted);
-      font-size: .95rem;
-      margin: 0 0 8px;
-    }
-    h1 {
-      margin: 0;
-      font-size: clamp(2.2rem, 5vw, 4.8rem);
-      line-height: 1.02;
-      letter-spacing: -.04em;
-      max-width: 12ch;
-    }
-    .lead {
-      margin: 18px 0 0;
-      max-width: 60ch;
-      font-size: 1.08rem;
-      color: var(--muted);
-    }
-    .cta-row {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-top: 24px;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 44px;
-      padding: 0 18px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      border: 1px solid transparent;
-      transition: transform .15s ease, background .15s ease, border-color .15s ease;
-    }
-    .btn:hover { transform: translateY(-1px); }
-    .btn-primary {
-      background: var(--accent);
-      color: white;
-    }
-    .btn-secondary {
-      background: transparent;
-      border-color: var(--line);
-      color: var(--text);
-    }
-    .mockup {
-      background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 12%, transparent), transparent);
-      border: 1px solid var(--line);
-      border-radius: 28px;
-      padding: 16px;
-      box-shadow: 0 12px 32px rgba(0,0,0,.08);
-    }
-    .mockup-inner {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      padding: 18px;
-    }
-    .screen {
-      border-radius: 18px;
-      background: var(--panel-2);
-      border: 1px solid var(--line);
-      padding: 18px;
-      min-height: 420px;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      justify-content: center;
-    }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      width: fit-content;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: color-mix(in oklab, var(--accent) 12%, var(--panel));
-      color: var(--accent);
-      font-size: .9rem;
-      font-weight: 600;
-    }
-    .phone-title {
-      margin: 0;
-      font-size: 1.2rem;
-      letter-spacing: -.02em;
-    }
-    .phone-line {
-      margin: 0;
-      color: var(--muted);
-      max-width: 40ch;
-    }
-    .search-box, .card {
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      background: var(--panel);
-      padding: 14px 16px;
-    }
-    .search-box {
-      display: grid;
-      gap: 8px;
-    }
-    .search-label {
-      font-weight: 600;
-    }
-    .search-input {
-      height: 42px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: transparent;
-      color: var(--text);
-      padding: 0 14px;
-      font: inherit;
-    }
-    .feature-grid {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-      margin-top: 18px;
-    }
-    .section {
-      padding: 54px 0 0;
-    }
-    .section h2 {
-      margin: 0 0 14px;
-      font-size: clamp(1.5rem, 2vw, 2.2rem);
-      letter-spacing: -.03em;
-    }
-    .section p.section-lead {
-      margin: 0 0 24px;
-      color: var(--muted);
-      max-width: 60ch;
-    }
-    .cards {
-      display: grid;
-      gap: 16px;
-      grid-template-columns: repeat(1, minmax(0, 1fr));
-    }
-    .card h3 {
-      margin: 0 0 8px;
-      font-size: 1.05rem;
-    }
-    .card p {
-      margin: 0;
-      color: var(--muted);
-    }
-    .footer {
-      margin-top: 64px;
-      padding-top: 18px;
-      border-top: 1px solid var(--line);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px 18px;
-      color: var(--muted);
-      font-size: .95rem;
-    }
-    .footer a {
-      color: var(--text);
-      text-decoration: none;
-    }
-    .footer a:hover { text-decoration: underline; }
-    @media (min-width: 900px) {
-      .hero {
-        grid-template-columns: 1.05fr .95fr;
-        gap: 32px;
-        padding-top: 42px;
-      }
-      .feature-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-      .cards {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
+    :root { color-scheme: light dark; --bg:#f7f6f2; --panel:#fff; --panel-2:#fbfbf9; --text:#1f1f1f; --muted:#666; --line:rgba(0,0,0,.08); --accent:#0a84ff; }
+    @media (prefers-color-scheme: dark) { :root { --bg:#121212; --panel:#1b1b1b; --panel-2:#202020; --text:#f3f3f3; --muted:#a0a0a0; --line:rgba(255,255,255,.08); --accent:#4da3ff; } }
+    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+    .frame{max-width:1440px;margin:0 auto;padding:24px} .desktop{display:block} .mobile{display:none}
+    .section{border:1px solid var(--line);border-radius:28px;background:var(--panel);padding:28px;box-shadow:0 10px 30px rgba(0,0,0,.06)}
+    .hero{display:grid;grid-template-columns:1.05fr .95fr;gap:28px;align-items:center}
+    .brand{color:var(--muted);font-size:.95rem;margin:0 0 8px} h1{margin:0;font-size:4.2rem;line-height:1.02;letter-spacing:-.04em;max-width:12ch}
+    .lead{margin:18px 0 0;max-width:60ch;font-size:1.08rem;color:var(--muted)} .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:999px;text-decoration:none;font-weight:600;border:1px solid transparent}
+    .btn-primary{background:var(--accent);color:white} .btn-secondary{background:transparent;border-color:var(--line);color:var(--text)}
+    .mockup{background:linear-gradient(180deg,color-mix(in oklab,var(--accent) 12%,transparent),transparent);border:1px solid var(--line);border-radius:28px;padding:16px;box-shadow:0 12px 32px rgba(0,0,0,.08)}
+    .mockup-inner{background:var(--panel);border:1px solid var(--line);border-radius:22px;padding:18px} .screen{border-radius:18px;background:var(--panel-2);border:1px solid var(--line);padding:18px;min-height:520px;display:flex;flex-direction:column;gap:14px;justify-content:center}
+    .pill{display:inline-flex;align-items:center;width:fit-content;padding:6px 12px;border-radius:999px;background:color-mix(in oklab,var(--accent) 12%,var(--panel));color:var(--accent);font-size:.9rem;font-weight:600}
+    .phone-title{margin:0;font-size:1.2rem;letter-spacing:-.02em} .phone-line{margin:0;color:var(--muted);max-width:42ch}
+    .search-box,.card{border:1px solid var(--line);border-radius:16px;background:var(--panel);padding:14px 16px} .search-box{display:grid;gap:8px} .search-label{font-weight:600}
+    .search-input{height:42px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--text);padding:0 14px;font:inherit}
+    .cards,.feature-grid{display:grid;gap:16px;margin-top:18px} .cards,.feature-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .section h2{margin:0 0 14px;font-size:2rem;letter-spacing:-.03em} .section p.section-lead{margin:0 0 24px;color:var(--muted);max-width:60ch}
+    .card h3{margin:0 0 8px;font-size:1.05rem} .card p{margin:0;color:var(--muted)}
+    .footer{margin-top:24px;padding-top:18px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:12px 18px;color:var(--muted);font-size:.95rem}
+    @media (max-width:900px){.desktop{display:none}.mobile{display:block}.mobile h1{font-size:2.7rem}.mobile .hero{grid-template-columns:1fr}.mobile .cards,.mobile .feature-grid{grid-template-columns:1fr}.mobile .screen{min-height:440px}}
   </style>
 </head>
 <body>
-  <main>
-    <section class="hero">
+  <div class="frame desktop">
+    <section class="section hero">
       <div>
         <p class="brand">extractall</p>
         <h1>Find the right pages in your PDFs, fast.</h1>
-        <p class="lead">Search one or more words, highlight results instantly, and extract only the pages that matter. extractall helps you work through long PDFs faster — even offline and with scanned documents.</p>
+        <p class="lead">Search one or more words, highlight results instantly, preview pages before extracting, and save only what matters. extractall helps you work through long PDFs faster — even offline and with scanned documents.</p>
         <div class="cta-row">
-          <a class="btn btn-primary" href="https://apps.apple.com" target="_blank" rel="noopener noreferrer">Download on the App Store</a>
-          <a class="btn btn-secondary" href="https://extractallapp.github.io/extractall-support/" target="_blank" rel="noopener noreferrer">Get support</a>
+          <a class="btn btn-primary" href="#">Download on the App Store</a>
+          <a class="btn btn-secondary" href="#">Get support</a>
         </div>
       </div>
-
-      <div class="mockup" aria-label="App preview">
+      <div class="mockup">
         <div class="mockup-inner">
           <div class="screen">
-            <span class="pill">Offline • OCR • Archive</span>
-            <h2 class="phone-title">Search, highlight, extract.</h2>
-            <p class="phone-line">Find the pages you need, keep the context you want, and share the result in a few taps.</p>
-            <div class="search-box">
-              <div class="search-label">Word to search</div>
-              <input class="search-input" type="text" value="contract clause" aria-label="Word to search">
-            </div>
-            <div class="card">
-              <h3>Relevant pages found</h3>
-              <p>Includes nearby pages for more context.</p>
-            </div>
-            <div class="card">
-              <h3>Extracted PDF ready</h3>
-              <p>Saved locally in your archive.</p>
-            </div>
+            <span class="pill">Offline • OCR • Preview</span>
+            <h2 class="phone-title">Search, preview, extract.</h2>
+            <p class="phone-line">Check the pages first, keep the context you want, and share the result in a few taps.</p>
+            <div class="search-box"><div class="search-label">Word to search</div><input class="search-input" type="text" value="contract clause" aria-label="Word to search"></div>
+            <div class="card"><h3>Preview ready</h3><p>See matched pages before you create the final PDF.</p></div>
+            <div class="card"><h3>Relevant pages found</h3><p>Includes nearby pages for more context.</p></div>
+            <div class="card"><h3>Extracted PDF ready</h3><p>Saved locally in your archive.</p></div>
           </div>
         </div>
       </div>
     </section>
-
-    <section class="section">
+    <section class="section" style="margin-top:24px;">
       <h2>Built for focused PDF work</h2>
       <p class="section-lead">extractall is for anyone who needs to find content in PDFs without wasting time scrolling through long documents.</p>
       <div class="cards">
-        <div class="card">
-          <h3>Search with precision</h3>
-          <p>Find pages containing all searched words or just one, depending on how you want to search.</p>
-        </div>
-        <div class="card">
-          <h3>Highlight instantly</h3>
-          <p>See matched words right away so you can check relevance at a glance.</p>
-        </div>
-        <div class="card">
-          <h3>Extract only what matters</h3>
-          <p>Create a new PDF with the relevant pages and optional nearby pages for context.</p>
-        </div>
+        <div class="card"><h3>Search with precision</h3><p>Find pages containing all searched words or just one, depending on how you want to search.</p></div>
+        <div class="card"><h3>Preview before extracting</h3><p>Review the matching pages first so you can confirm they are the right ones.</p></div>
+        <div class="card"><h3>Extract only what matters</h3><p>Create a new PDF with the relevant pages and optional nearby pages for context.</p></div>
       </div>
     </section>
-
-    <section class="section">
+    <section class="section" style="margin-top:24px;">
       <h2>Works offline, including scanned PDFs</h2>
       <p class="section-lead">extractall processes files locally on your device. That means faster workflows, more privacy, and full support for scanned PDFs through OCR.</p>
       <div class="feature-grid">
-        <div class="card">
-          <h3>Offline by design</h3>
-          <p>No uploading, no waiting, no server round trips.</p>
-        </div>
-        <div class="card">
-          <h3>OCR support</h3>
-          <p>Search text inside scanned documents too.</p>
-        </div>
-        <div class="card">
-          <h3>Archive included</h3>
-          <p>Keep extracted files organized and ready to share.</p>
-        </div>
+        <div class="card"><h3>Offline by design</h3><p>No uploading, no waiting, no server round trips.</p></div>
+        <div class="card"><h3>OCR support</h3><p>Search text inside scanned documents too.</p></div>
+        <div class="card"><h3>Archive included</h3><p>Keep extracted files organized and ready to share.</p></div>
       </div>
     </section>
+    <div class="footer"><span>© 2026 extractall</span><span>Support</span><span>Privacy Policy</span></div>
+  </div>
 
-    <div class="footer">
-      <span>© 2026 extractall</span>
-      <a href="https://extractallapp.github.io/extractall-support/" target="_blank" rel="noopener noreferrer">Support</a>
-      <a href="https://extractallapp.github.io/extractall-privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+  <div class="frame mobile">
+    <div class="mobile-wrap">
+      <section class="section hero">
+        <div>
+          <p class="brand">extractall</p>
+          <h1>Find the right pages in your PDFs, fast.</h1>
+          <p class="lead">Search one or more words, highlight results instantly, and extract only the pages that matter.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#">Download on the App Store</a>
+            <a class="btn btn-secondary" href="#">Get support</a>
+          </div>
+        </div>
+        <div class="mockup">
+          <div class="mockup-inner">
+            <div class="screen">
+              <span class="pill">Offline • OCR • Preview</span>
+              <h2 class="phone-title">Search, preview, extract.</h2>
+              <p class="phone-line">Check the pages first and share the result in a few taps.</p>
+              <div class="search-box"><div class="search-label">Word to search</div><input class="search-input" type="text" value="contract clause" aria-label="Word to search"></div>
+              <div class="card"><h3>Preview ready</h3><p>See matched pages before you create the final PDF.</p></div>
+              <div class="card"><h3>Relevant pages found</h3><p>Includes nearby pages for more context.</p></div>
+              <div class="card"><h3>Extracted PDF ready</h3><p>Saved locally in your archive.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
-  </main>
+  </div>
 </body>
 </html>
